@@ -1,0 +1,215 @@
+{% extends "layouts/base.html" %}
+{% load crispy_forms_tags %}
+{% block title %} 查看行李锁{% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">行李锁管理</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <!-- [ breadcrumb ] end -->
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5><i class="fas fa-book"></i> 详细信息 : << {{ lock.title }} >> </h5>
+                                </div>
+
+                                <div class="card-block">
+                                    <div class="col-md-12">
+                                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="pills-home-tab" data-toggle="pill"
+                                                   href="#pills-basic" role="tab" aria-controls="pills-basic"
+                                                   aria-selected="true">概括</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="pills-profile-tab" data-toggle="pill"
+                                                   href="#pills-profile" role="tab" aria-controls="pills-profile"
+                                                   aria-selected="false">描述</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="pills-contact-tab" data-toggle="pill"
+                                                   href="#pills-contact" role="tab" aria-controls="pills-contact"
+                                                   aria-selected="false">锁架位置</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="pills-record-tab" data-toggle="pill"
+                                                   href="#pills-record" role="tab" aria-controls="pills-record"
+                                                   aria-selected="false">使用记录</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="pills-comment-tab" data-toggle="pill"
+                                                   href="#pills-comment" role="tab" aria-controls="pills-comments"
+                                                   aria-selected="false">评论</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="pills-tabContent">
+                                            <!-- 概括 -->
+                                            <div class="tab-pane fade show active" id="pills-basic" role="tabpanel"
+                                                 aria-labelledby="pills-home-tab">
+                                                <div class='row'>
+                                                    <div class='col-6'>
+                                                        <p>名称: {{ lock.title }} </p>
+                                                        <p>位置: {{ lock.location }} </p>
+                                                        <p>制造商: {{ lock.manufacturer }} </p>
+                                                        <p>数量: {{ lock.quantity }} </p>
+                                                    </div>
+                                                    <div class='col-6'>
+                                                        <p>创建于: {{ lock.created_at|date:"Y/m/d H:i" }} </p>
+                                                        <p>最后更新者: <span
+                                                                class="badge badge-info">{{ lock.updated_by }}</span>
+                                                            at {{ lock.updated_at|date:"Y/m/d H:i" }} </p>
+                                                        <p>使用次数: {{ lock.total_borrow_times }} </p>
+                                                        <p>当前状态 : {{ lock.get_status_display }} </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 描述 -->
+                                            <div class="tab-pane fade" id="pills-profile" role="tabpanel"
+                                                 aria-labelledby="pills-profile-tab">
+                                                <p class="mb-0">
+                                                    {{ lock.description }}
+                                                </p>
+                                            </div>
+                                            <!-- 锁架位置 -->
+                                            <div class="tab-pane fade" id="pills-contact" role="tabpanel"
+                                                 aria-labelledby="pills-contact-tab">
+                                                <div class='row'>
+                                                    <div class='col-6'>
+                                                        <p> 位置 Id: {{ lock.location }}{{ lock.lockshelf_number }}</p>
+                                                        <p> 车厢: {{ lock.location }} </p>
+                                                        <p> 锁架: {{ lock.lockshelf_number }} </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 使用记录 -->
+                                            <div class="tab-pane fade" id="pills-record" role="tabpanel"
+                                                 aria-labelledby="pills-record-tab">
+                                                {% if related_records %}
+                                                    <table class="table table-sm">
+                                                    <thead>
+                                                    <tr>
+                                                        <th scope="col">使用者</th>
+                                                        <th scope="col">行李锁名称</th>
+                                                        <th scope="col">制造商</th>
+                                                        <th scope="col">开始时间 - 结束时间</th>
+                                                        <th scope="col">状态</th>
+                                                        <th scope="col">归还时间</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                    {% for record in related_records %}
+                                                        <tr>
+                                                            <td>{{ record.borrower }} </td>
+                                                            <td>{{ record.lock }}</td>
+                                                            <td>{{ record.manufacturer }}</td>
+                                                            <td>{{ record.start_day | date:"Y/m/d H:i" }}
+                                                                - {{ record.end_day | date:"Y/m/d H:i" }}</td>
+                                                            <td>{{ record.get_open_or_close_display }}</td>
+                                                            <td>{{ record.closed_at | date:"Y/m/d H:i" }}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                {% endif %}
+                                                </tbody>
+                                                </table>
+
+                                            </div>
+
+                                            <!-- Comments -->
+                                            <div class="tab-pane fade" id="pills-comment" role="tabpanel"
+                                                 aria-labelledby="pills-comment-tab">
+                                                {% if user.is_authenticated %}
+                                                    <div>
+                                                        <form
+                                                                action="{% url 'comment:post_comment' lock.id %}"
+                                                                method="POST"
+                                                        >
+                                                            {% csrf_token %}
+                                                            <div class="form-group">
+                                                                <label for="body">
+                                                                    <strong>
+                                                                        添加评论：
+                                                                    </strong>
+                                                                </label>
+
+                                                                <div>
+                                                                    {{ comment_form.media }}
+                                                                    {{ comment_form.body }}
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- 提交按钮 -->
+                                                            <button type="submit" class="btn btn-success ">发送</button>
+                                                        </form>
+                                                    </div>
+                                                    <br>
+                                                {% else %}
+                                                    <br>
+                                                    <h5 class="row justify-content-center">
+                                                        请先<a href="{% url 'login' %}">登录</a>再进行评论！
+                                                    </h5>
+                                                    <br>
+                                                {% endif %}
+                                                <h4>全部 {{ comments.count }} 条评论</h4>
+                                                <div>
+                                                    {% for comment in comments %}
+                                                        <hr>
+                                                        <p>
+                                                            <strong style="color: rgb(175, 31, 55)">
+                                                                {{ comment.user }}
+                                                            </strong>
+                                                            发表于
+                                                            <span style="color: green">
+                                             {{ comment.created_at|date:"Y/m/d H:i" }}
+                                        </span> :
+                                                        </p>
+                                                        <p>{{ comment.body|safe }}</p>
+
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <a href="{% url 'lock_list' %}" class='btn btn-dark'>返回列表</a>
+                            <a href="{% url 'lock_update' lock.id %}" class='btn btn-primary'>更新</a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+    <script>
+        $(".django-ckeditor-widget").removeAttr('style');
+    </script>
+
+{% endblock javascripts %}

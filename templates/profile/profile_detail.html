@@ -1,0 +1,86 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} 用户管理{% endblock %}
+
+{% block stylesheets %}
+{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">用户管理</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- [ breadcrumb ] end -->
+        <div class="main-body">
+            <div class="page-wrapper">
+                <div class="row">
+
+                    <div class="col-md-7">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5><i class="fas fa-user"></i>&nbsp;我的资料 </h5>
+                            </div>
+                            <div class="card-body">
+
+                                
+
+                                <h5><span class="badge badge-pill badge-info">名称&nbsp;</span>&nbsp;{{ profile.user.username}}</h5>
+                                <h5><span class="badge badge-pill badge-info">年龄&nbsp;</span>&nbsp;{{ profile.age}}</h5>
+                                <h5><span class="badge badge-pill badge-info">性别&nbsp;</span>&nbsp;{{ profile.get_gender_display}}</h5>
+                                <h5><span class="badge badge-pill badge-info">电话&nbsp;</span>&nbsp;{{ profile.phone_number}}</h5>
+                                <h5 class="m-b-20"><span class="badge badge-pill badge-info">邮箱&nbsp;</span>&nbsp;{{ profile.email}}</h5>
+                                <blockquote class="blockquote">
+                                    <p class="mb-0">{{profile.bio}}</p>
+                                  </blockquote>    
+ 
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-5">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5> 头像 </h5>
+                            </div>
+                            <div class="card-body">
+                                        <div class='text-center'>
+                                            {% if profile.profile_pic%}
+                                            <img src="{{profile.profile_pic.url}}" style=" max-width:40%;border-radius: 50%;text-align: center;" alt="">
+                                            {% else %}
+                                            <img src="{% static 'assets/images/user/avatar-2.jpg' %}" alt="">
+                                            <br>
+                                            <p class='text-center'>没有头像</p>
+                                            {% endif %}
+                                        </div>
+
+ 
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <a href="{% url 'profile_update' profile.pk %}" class='btn btn-dark'>修改资料</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

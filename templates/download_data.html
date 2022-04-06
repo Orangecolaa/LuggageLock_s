@@ -1,0 +1,66 @@
+{% extends "layouts/base.html" %}
+{% load lock_extras %}
+{% block title %} 数据下载 {% endblock %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        
+        <div class="main-body">
+            <div class="page-wrapper">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            {% show_messages %}
+                            <div class="card-header">
+                                <h5>下载数据</h5>
+                            </div>
+                            <div class="card-block ">
+                                <div class='row'>
+  
+                                    <div class="table-responsive table-hover">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>数据集</th>
+                                                    <th>大小</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for model_name,volume in model_list.items %}
+                                                <tr>
+                                                    <td>{{model_name | upper}}</td>
+                                                    <td>{{volume}}</td>
+                                                    <td><a href="{% url 'data_download' model_name %}" class="text-center" ><span><i class="fas fa-download"></i>&nbsp;&nbsp;下载</span></a></td>
+                                                </tr>
+
+                                                {% endfor %}
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- [ Main Content ] end -->
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

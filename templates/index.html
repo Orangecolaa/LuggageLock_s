@@ -1,0 +1,343 @@
+{% extends "layouts/base.html" %}
+{% load lock_extras %}
+{% block title %} 首页 {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+
+            <div class="main-body">
+                <br>
+                <div class="page-wrapper">
+                    <div class="row">
+                        <!--  Count Locks  -->
+                        <div class='col-md-4'>
+                            <div class="card">
+                                <div class="card-block">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-auto">
+                                            <i class="fas fa-lock f-40 text-c-blue "></i>
+                                        </div>
+                                        <div class="col">
+                                            <h3 class="f-w-300">{{ data_count.lock }}</h3>
+                                            <span class="d-block text-uppercase">行李锁总数</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- Count Locations -->
+                        <div class='col-md-4'>
+                            <div class="card">
+                                <div class="card-block">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-auto">
+                                            <i class="fas fa-cubes f-40 text-c-purple"></i>
+                                        </div>
+                                        <div class="col">
+                                            <h3 class="f-w-300">{{ data_count.location }}</h3>
+                                            <span class="d-block text-uppercase">位置总数</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Count Manufacturers -->
+                        <div class='col-md-4'>
+                            <div class="card">
+                                <div class="card-block">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-auto">
+                                            <i class=" feather icon-file-text f-40 text-c-green"></i>
+                                        </div>
+                                        <div class="col">
+                                            <h3 class="f-w-300">{{ data_count.manufacturer }}</h3>
+                                            <span class="d-block text-uppercase">制造商总数</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-8 col-md-6">
+                            <!-- Recent Closed Records -->
+                            <div class="card Recent-Users">
+                                <div class="card-header">
+                                    <h5>最近使用记录</h5>
+                                </div>
+                                <div class="card-block px-0 py-3">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover ">
+                                            <thead class="">
+                                            <tr>
+                                                <th>行李锁</th>
+                                                <th>制造商</th>
+                                                <th>开始日期-结束日期</th>
+                                                <th>归还于</th>
+                                                <!-- <th>On Time ?</th> -->
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for r in new_closed_records %}
+                                                <tr class="unread">
+                                                    <td>
+                                                        <p class="mb-1 badge"><a
+                                                                href="{% url 'record_detail' r.pk %}" class="badge badge-light" style="font-size: 14px; color: #888887"> {{ r.lock|slice:6 }}</a>
+                                                        </p>
+                                                    </td>
+                                                    <td>{{ r.manufacturer |slice:6 }}</td>
+                                                    <td>{{ r.start_day|date:"Y/m/d" }}
+                                                        - {{ r.end_day|date:"Y/m/d" }} </td>
+                                                    <td>{{ r.closed_at | timesince }}</td>
+                                                    <!-- <td>{{r.return_status}}</td> -->
+                                                </tr>
+                                            {% endfor %}
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card card-event">
+                                <!-- Coming Event -->
+                                <div class="card-block">
+                                    <div class="row align-items-center justify-content-center">
+                                        <div class="col">
+                                            <h5 class="m-0">通知事件</h5>
+                                        </div>
+                                        <div class="col-auto">
+                                            <label class="label theme-bg2 text-white f-14 f-w-400 float-right">34%</label>
+                                        </div>
+                                    </div>
+                                    <h2 class="mt-3 f-w-300">15<sub class="text-muted f-14">条消息</sub></h2>
+                                    <h6 class="text-muted mt-4 mb-0">你可以处理这些信息 </h6>
+                                    <i class="fab fa-angellist text-c-purple f-50"></i>
+                                </div>
+                            </div>
+                            <!-- All users -->
+                            <div class="card">
+                                <div class="card-block border-bottom">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-auto">
+                                            <i class="fas fa-user f-30 " style="color:coral"></i>
+                                        </div>
+                                        <div class="col">
+                                            <h3 class="mt-2 f-w-300">{{ all_users }} <sub
+                                                    class="text-muted f-15 ">个用户</sub></h3>
+                                            <span class="d-block text-uppercase">全部</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Locks lent this week -->
+                                <div class="card-block">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-auto">
+                                            <i class="fas fa-unlock f-30 text-c-blue "></i>
+                                        </div>
+                                        <div class="col">
+                                            <h3 class="mt-2 f-w-300">{{ lent_locks_this_week }} <sub
+                                                    class="text-muted f-15 ">个行李锁</sub></h3>
+                                            <span class="d-block text-uppercase">本周使用</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-12 col-md-12 m-b-30">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>近期事件</h5>
+                                </div>
+                                <div class="card-block ">
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link " id="home-tab" data-toggle="tab" href="#new_member"
+                                               role="tab" aria-controls="home" aria-selected="false">新成员</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link " id="profile-tab" data-toggle="tab" href="#stock"
+                                               role="tab"
+                                               aria-controls="profile" aria-selected="false">近期库存</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#logs"
+                                               role="tab"
+                                               aria-controls="contact" aria-selected="false">近期日志</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link active show" id="contact-tab" data-toggle="tab"
+                                               href="#return" role="tab" aria-controls="return" aria-selected="false">今日归还</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="myTabContent">
+                                        <!-- 新成员 -->
+                                        <div class="tab-pane fade " id="new_member" role="tabpanel"
+                                             aria-labelledby="home-tab">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th>名字</th>
+                                                    <th>性别</th>
+                                                    <th>年龄</th>
+                                                    <th>联系电话</th>
+                                                    <th>邮箱</th>
+                                                    <th>加入时间</th>
+                                                    <th class="text-right"></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for user in new_users %}
+                                                    <tr>
+                                                        <td>{{ user.user.username }}</td>
+                                                        {% if user.gender == 'm' %}
+                                                            <td><i class="fas fa-mars "></i></td>
+                                                        {% else %}
+                                                            <td><i class="fas fa-venus"></i></td>
+                                                        {% endif %}
+                                                        <td>{{ user.age }}</td>
+                                                        <td>{{ user.phone_number }}</td>
+                                                        <td>{{ user.email }}</td>
+                                                        <td>{{ user.user.date_joined }}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                        <!-- 近期库存 -->
+                                        <div class="tab-pane fade " id="stock" role="tabpanel"
+                                             aria-labelledby="profile-tab">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th>名称</th>
+                                                    <th>制造商</th>
+                                                    <th>数量</th>
+                                                    <th>位置</th>
+                                                    <th class="text-right"></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                {% for lock in short_inventory %}
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{% url 'lock_detail' lock.pk %}" class="badge badge-light" style="font-size: 14px; color: #888887">{{ lock.title }}</a>
+                                                        </td>
+                                                        <td>{{ lock.manufacturer }}</td>
+                                                        <td>{{ lock.quantity }}</td>
+                                                        <td>{{ lock.location }}</td>
+                                                        {% if lock.quantity <= 5 %}
+                                                            <td class="text-center"><i
+                                                                    class="fas fa-exclamation-circle text-c-red f-20"></i>
+                                                            </td>
+                                                        {% elif  lock.quantity > 5 and lock.quantity <= 10 %}
+                                                            <td class="text-center"><i
+                                                                    class="fas fa-exclamation-circle text-c-yellow f-20"></i>
+                                                            </td>
+                                                        {% else %}
+                                                            <td class="text-center"><i
+                                                                    class="fas fa-exclamation-circle text-c-green f-20"></i>
+                                                            </td>
+                                                        {% endif %}
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- 近期日志 -->
+                                        <div class="tab-pane fade" id="logs" role="tabpanel"
+                                             aria-labelledby="contact-tab">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th>用户</th>
+                                                    <th>行为</th>
+                                                    <th>时间</th>
+                                                    <th>类型</th>
+                                                    <th class="text-right"></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for log in recent_user_activities %}
+                                                    <tr>
+                                                        <td><img class="rounded-circle  m-r-10" style="width:30px;"
+                                                                 src="{{ user_avatar|get_item:log.created_by }}" alt="用户头像">{{ log.created_by }}
+                                                        </td>
+                                                        <td> {{ log.detail }} </td>
+                                                        <td>{{ log.created_at|timesince }}</td>
+                                                        <td>{{ log.get_operation_type_display }} </td>
+
+                                                        {% if log.operation_type == "success" %}
+                                                            <td class="text-right"><i
+                                                                    class="fas fa-circle text-c-green f-10"></i></td>
+                                                        {% endif %}
+
+                                                        {% if log.operation_type == "warning" %}
+                                                            <td class="text-right"><i
+                                                                    class="fas fa-circle text-c-yellow f-10"></i></td>
+                                                        {% endif %}
+
+                                                        {% if log.operation_type == "danger" %}
+                                                            <td class="text-right"><i
+                                                                    class="fas fa-circle text-c-red f-10"></i></td>
+                                                        {% endif %}
+
+                                                        {% if log.operation_type == "info" %}
+                                                            <td class="text-right"><i
+                                                                    class="fas fa-circle text-c-blue f-10"></i></td>
+                                                        {% endif %}
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <!-- 今日归还 -->
+                                        <div class="tab-pane fade active show" id="return" role="tabpanel"
+                                             aria-labelledby="contact-tab">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th>使用者</th>
+                                                    <th>行李锁</th>
+                                                    <th>制造商</th>
+                                                    <th>位置</th>
+                                                    <th>使用时间</th>
+                                                    <th>归还时间</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for r in locks_return_today %}
+                                                    <tr>
+                                                        <td>{{ r.borrower }}</td>
+                                                        <td>{{ r.lock|truncatewords:3 }}</td>
+                                                        <td>{{ r.manufacturer }} </td>
+                                                        <td>{{ r.location }}</td>
+                                                        <td>{{ r.start_day|date:"m-d H:i:s" }} </td>
+                                                        <td>{{ r.end_day|date:"m-d H:i:s" }} </td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block javascripts %}{% endblock javascripts %}

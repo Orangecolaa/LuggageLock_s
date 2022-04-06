@@ -1,0 +1,261 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %} 图表 {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{% static '/assets/plugins/chart-morris/css/morris.css' %}">
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <!-- [ breadcrumb ] start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <!-- <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">Morris Chart</h5>
+                            </div>
+
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <!-- [ Main Content ] start -->
+                    <div class="row">
+                        <!-- [ Morris Chart ] start -->
+                        <div class="col-xl-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>行李锁库存</h5>
+                                </div>
+                                <div class="card-block">
+                                    <figure class="highcharts-figure">
+                                        <div id="lock-count" style="height:400px"></div>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>使用最多的行李锁</h5>
+                                </div>
+                                <div class="card-block">
+                                    <figure class="highcharts-figure">
+                                        <div id="top-borrow" style="height:400px"></div>
+                                    </figure>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>使用记录状态</h5>
+                                </div>
+                                <div class="card-block">
+                                    <figure class="highcharts-figure">
+                                        <div id="record-status" style="height:400px"></div>
+                                    </figure>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xl-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>近7天使用记录</h5>
+                                </div>
+                                <div class="card-block">
+                                    <figure class="highcharts-figure">
+                                        <div id="weekly-borrow" style="height:400px"></div>
+                                    </figure>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+    <script type="text/javascript" src="https://cdn.highcharts.com.cn/highcharts/highcharts.js"></script>
+    <script type="text/javascript" src="https://cdn.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+    <script type="text/javascript" src="https://cdn.highcharts.com.cn/highcharts/modules/export-data.js"></script>
+    <script type="text/javascript" src="https://cdn.highcharts.com.cn/highcharts/modules/accessibility.js"></script>
+    <script type="text/javascript" src="https://cdn.highcharts.com.cn/highcharts/modules/cylinder.js"></script>
+    <script type="text/javascript" src="https://cdn.highcharts.com.cn/highcharts-3d.js"></script>
+    <script type="text/javascript" src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+    <script type="text/javascript">
+        const chart_top_stock_lock = new Highcharts.Chart({
+            chart: {
+                renderTo: 'lock-count',
+                type: 'column',
+                options3d: {
+                    enabled: true,
+                    alpha: 5,
+                    beta: 15,
+                    depth: 50,
+                }
+            },
+            title: {
+                text: '库存Top5'
+            },
+            xAxis: {
+                categories: {{top_5_lock_titles|safe}}
+            },
+            yAxis: {title: {text: '库存'}},
+            series: [{
+                type: 'column',
+                name: '数量',
+                data: {{top_5_lock_quantities}},
+            }]
+        });
+
+        new Highcharts.Chart({
+            chart: {
+                renderTo: 'top-borrow',
+                type: 'column',
+            },
+            title: {
+                text: '最多使用'
+            },
+            xAxis: {
+                categories: {{top_borrow_titles|safe}},
+
+            },
+            yAxis: {title: {text: '次数'}},
+            series: [{
+                type: 'column',
+                name: '次数',
+                data: {{top_borrow_times}},
+                color: "#47CC8A",
+            }]
+        });
+
+
+        new Highcharts.Chart({
+            chart: {
+                type: 'pie',
+                renderTo: 'record-status',
+            },
+
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+
+            title: {
+                text: '正使用 / 已归还'
+            },
+            accessibility: {
+                point: {
+                    valueSuffix: '%'
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.y:.0f}'
+                    }
+                }
+            },
+            series: [{
+                name: '记录',
+                colorByPoint: true,
+                data: [{
+                    name: '正使用',
+                    y: {{r_open |safe}},
+                    color: "#8085E9",
+                },
+
+                    {
+                        name: '已归还',
+                        y: {{r_close |safe}},
+                        color: "#F7A35C",
+                    }
+                ]
+            }]
+        });
+
+
+        new Highcharts.Chart('weekly-borrow', {
+
+            title: {
+                text: '使用记录 / 周'
+            },
+
+            subtitle: {
+                text: '按周计算'
+            },
+
+            yAxis: {
+                title: {
+                    text: '总使用数'
+                }
+            },
+
+            xAxis: {
+                categories: {{week_borrow|safe}}
+            },
+
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle'
+            },
+
+            plotOptions: {
+                series: {
+                    label: {
+                        connectorAllowed: false
+                    },
+                }
+            },
+
+            series: [{
+                name: '使用数',
+                data: {{count_week_borrow|safe}}
+            }],
+
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom'
+                        }
+                    }
+                }]
+            }
+
+        });
+
+    </script>
+
+{% endblock javascripts %}

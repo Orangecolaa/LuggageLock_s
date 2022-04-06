@@ -1,0 +1,117 @@
+{% extends "layouts/base.html" %}
+{% load lock_extras %}
+{% block title %} 员工管理 {% endblock %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <div class="page-header">
+                <div class="page-block">
+                    <!-- Title -->
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">员工管理</h5>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <br>
+            <!-- [ breadcrumb ] end -->
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <!-- [ Main Content ] start -->
+                    <div class="row">
+                        <!-- [ basic-table ] start -->
+                        <div class="col-xl-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>总共 {{ count_total }} 个注册员工</h5>
+                                </div>
+                                {% show_messages %}
+
+                                <div class="card-block ">
+
+
+                                    <div class="table-responsive table-hover">
+                                        <!-- Table -->
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>名称</th>
+                                                <th>邮箱</th>
+                                                <th>所属组</th>
+                                                <th>超级用户</th>
+                                                <th>活跃</th>
+                                                <th>上次登录</th>
+                                                <th>操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            {% for e in employees %}
+                                                <tr>
+                                                    <th scope="row">{{ e.username }}</th>
+                                                    <td>{{ e.email }}</td>
+                                                    <td>
+                                                        {{ e.groups.all|join:' / ' }}</td>
+                                                    <td>
+                                                        {% if e.is_superuser %}
+                                                            <i class="fas fa-check-circle" style="color:#267013"></i>
+                                                        {% else %}
+                                                            <i class="fas fa-times-circle" style="color:#f01616"></i>
+                                                        {% endif %}
+                                                    </td>
+
+                                                    <td>
+                                                        {% if e.is_active %}
+                                                            <i class="fas fa-check-circle" style="color:#267013"></i>
+                                                        {% else %}
+                                                            <i class="fas fa-times-circle" style="color:#f01616"></i>
+                                                        {% endif %}
+
+                                                    </td>
+
+
+                                                    <td>{{ e.last_login|date:"Y/m/d H:i" }}  </td>
+                                                    <td><a href="{% url 'employees_detail' e.pk %}"
+                                                           class="badge badge-info"><i class="feather icon-edit">修改</i></a>
+                                                        <a href="{% url 'employees_delete' e.pk %}"
+                                                           class="badge badge-danger"><i
+                                                                class="feather icon-trash-2">删除</i></a>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="row">
+                                        <div class='col-4'>
+                                            <a href="{% url 'employees_create' %}" class='btn btn-primary'>添加新用户</a>
+                                        </div>
+                                        <div class='col-8'>
+                                            {% show_pagination %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- [ Main Content ] end -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

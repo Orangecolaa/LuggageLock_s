@@ -1,0 +1,72 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load tailwind_filters %}
+{% block title %} 使用记录管理 {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+    <link href="{% static 'assets/css/tailwind.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/css/jquery-ui.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/jquery.datetimepicker.css' %}">
+{% endblock stylesheets %}
+
+
+{% block content %}
+
+    <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>创建使用记录</h5>
+                                </div>
+                                <div class="card-block table-border-style">
+                                    <form method="post" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        {{ form | crispy }}
+                                        {{ form.media }}
+                                        <button type="submit" class="btn btn-success">保存</button>
+                                        <a href="{% url 'record_list' %} " class="btn btn-secondary">取消</a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+    <script src="{% static 'assets/plugins/jquery/js/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/jquery/js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/jquery/js/jquery.datetimepicker.js' %}"></script>
+
+    <script>
+        $(function () {
+            $("#id_look").autocomplete({
+                source: "{% url 'auto_lock_name' %}",
+            });
+        });
+    </script>
+
+{% endblock javascripts %}

@@ -1,0 +1,132 @@
+{% extends "layouts/base.html" %}
+{% load lock_extras %}
+{% block title %} 行李锁列表 {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">行李锁管理</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [ breadcrumb ] end -->
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <!-- [ Main Content ] start -->
+                    <div class="row">
+                        <!-- [ basic-table ] start -->
+                        <div class="col-xl-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>总共 {{ count_total }} 个行李锁</h5>
+                                </div>
+
+                                {% show_messages %}
+
+                                <div class="card-block">
+                                    <div class='row'>
+                                        <!-- 排序 -->
+                                        <div class="col-8">
+                                            <b>排序方式 : </b>
+                                            <a href="{% url 'lock_list' %}?search={{ search }}&orderby=id"
+                                               class="badge badge-secondary">Id</a> |
+                                            <a href="{% url 'lock_list' %}?search={{ search }}&orderby=title"
+                                               class="badge badge-secondary">名称</a> |
+                                            <a href="{% url 'lock_list' %}?search={{ search }}&orderby=location"
+                                               class="badge badge-secondary">位置</a> |
+                                            <a href="{% url 'lock_list' %}?search={{ search }}&orderby=quantity"
+                                               class="badge badge-secondary">数量</a> |
+                                            <a href="{% url 'lock_list' %}?search={{ search }}&orderby=manufacturer"
+                                               class="badge badge-secondary">制造商</a>
+                                        </div>
+                                        <!-- 搜索 -->
+                                        <div class="col-4">
+                                            <form class="form-inline mb-2">
+                                                <div class="form-group mx-sm-3 mb-2">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           name="search" ,
+                                                           id='search' ,
+                                                           placeholder="搜索 名称/制造商/位置" ,
+                                                           value={{ search }}
+                                                    >
+                                                </div>
+                                                <button type="submit" class="btn btn-secondary mb-2 btn-sm">搜索</button>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <div class="table-responsive ">
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>名称</th>
+                                                <th>制造商</th>
+                                                <th>位置</th>
+                                                <th>状态</th>
+                                                <th>数量</th>
+                                                <th>锁架</th>
+                                                <th>更新者</th>
+                                                <th>操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            {% for lock in locks %}
+                                                <tr>
+                                                    <th scope="row">{{ lock.id }}</th>
+                                                    <td>{{ lock.title|slice:'10' }}</td>
+                                                    <td>{{ lock.manufacturer }}</td>
+                                                    <td>{{ lock.location }}</td>
+                                                    <td>{{ lock.get_status_display }}</td>
+                                                    <td>{{ lock.quantity }}</td>
+                                                    <td>{{ lock.lockshelf_number }}</td>
+                                                    <td>{{ lock.updated_by }}  </td>
+                                                    <td>
+                                                        <a href="{% url 'lock_detail' lock.id %}"
+                                                           class="badge badge-warning"><i class="feather icon-eye"></i>&nbsp;详情</a>
+                                                        <a href="{% url 'lock_update' lock.id %}"
+                                                           class="badge badge-info"><i class="feather icon-edit"></i>&nbsp;修改</a>&nbsp;
+                                                        <a href="{% url 'lock_delete' lock.id %}"
+                                                           class="badge badge-danger"><i
+                                                                class="feather icon-trash-2"></i>&nbsp;删除</a>&nbsp;
+                                                    </td>
+
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="row">
+                                        <div class='col-4'>
+                                            <a href="{% url 'lock_create' %}" class='btn btn-primary'>添加行李锁</a>
+                                        </div>
+                                        <div class='col-8'>
+                                            {% show_pagination %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block javascripts %}{% endblock javascripts %}

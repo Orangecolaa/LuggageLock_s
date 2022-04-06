@@ -1,0 +1,114 @@
+{% extends "layouts/base.html" %}
+{% load lock_extras %}
+{% block title %} 使用记录管理 {% endblock %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <div class="page-header">
+                <div class="page-block">
+                    <!-- Title -->
+                    <div class="row align-items-center">
+                        <!-- <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10"><span><i class="fas fa-user "></i> {{record.borrower}} => "{{record.lock}}"  </span></h5>
+
+                        </div>
+
+                    </div> -->
+                    </div>
+                </div>
+
+            </div>
+
+            <br>
+            <!-- [ breadcrumb ] end -->
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <!-- [ Main Content ] start -->
+                    <div class="row">
+                        <!-- [ basic-table ] start -->
+                        <div class="col-xl-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="m-b-10"><span><i
+                                            class="fas fa-user "></i> {{ record.borrower }} 使用 "{{ record.lock }}" 行李锁  </span>
+                                    </h5>
+                                </div>
+
+                                {% show_messages %}
+
+                                <div class="card-block ">
+                                    <div class='row'>
+                                        <div class="col-12 d-flex justify-content-center text-center">
+                                            <table class="table table-sm  ">
+                                                <thead class="thead-dark">
+                                                <tr>
+                                                    <th scope="col">标题</th>
+                                                    <th scope="col">属性</th>
+
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                <tr>
+                                                    <td>使用者名称</td>
+                                                    <td>{{ record.borrower }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>联系方式</td>
+                                                    <td>{{ record.borrower_phone_number }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>行李锁名称</td>
+                                                    <td>{{ record.lock }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>制造商名称</td>
+                                                    <td>{{ record.manufacturer }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>位置</td>
+                                                    <td>{{ record.location }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>数量</td>
+                                                    <td>{{ record.quantity }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>使用时间</td>
+                                                    <td>从 {{ record.start_day| date:"Y-m-d H:i" }}
+                                                        到 {{ record.end_day| date:"Y-m-d H:i" }} </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>使用状态</td>
+                                                    <td>{{ record.get_open_or_close_display }}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <a href="{% url 'record_list' %}" class='btn btn-primary'>返回列表</a>
+
+                                    {% if record.open_or_close == 0 %}
+                                        <a href="{% url 'record_close' record.pk %}" class='btn btn-danger'>关闭使用</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- [ Main Content ] end -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

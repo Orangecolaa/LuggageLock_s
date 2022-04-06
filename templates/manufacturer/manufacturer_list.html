@@ -1,0 +1,128 @@
+{% extends "layouts/base.html" %}
+{% load lock_extras %}
+{% block title %} 制造商列表 {% endblock %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">制造商管理</h5>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <br>
+            <!-- [ breadcrumb ] end -->
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <!-- [ Main Content ] start -->
+                    <div class="row">
+                        <!-- [ basic-table ] start -->
+                        <div class="col-xl-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>总共 {{ count_total }} 个制造商</h5>
+                                </div>
+
+                                {% show_messages %}
+
+                                <div class="card-block ">
+                                    <div class='row'>
+                                        <div class="col-8">
+                                            <b>Sort By : - </b>
+                                            <a href="{% url 'manufacturer_list' %}?search={{ search }}&orderby=id"
+                                               class="badge badge-secondary">Id</a> |
+                                            <a href="{% url 'manufacturer_list' %}?search={{ search }}&orderby=name"
+                                               class="badge badge-secondary">名称</a> |
+                                            <a href="{% url 'manufacturer_list' %}?search={{ search }}&orderby=city"
+                                               class="badge badge-secondary">城市</a> |
+                                            <a href="{% url 'manufacturer_list' %}?search={{ search }}&orderby=created_at"
+                                               class="badge badge-secondary">创建时间</a>
+                                        </div>
+
+                                        <div class="col-4">
+                                            <form class="form-inline mb-2">
+                                                <div class="form-group  mb-2">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           name="search"
+                                                           id='search'
+                                                           placeholder="搜索 名称/城市/联系"
+                                                           value={{ search }}
+                                                    >
+                                                </div>
+                                                <button type="submit" class="btn btn-secondary mb-2 ml-2 btn-sm">搜索
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <div class="table-responsive table-hover">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>名称</th>
+                                                <th>城市</th>
+                                                <th>联系方式</th>
+                                                <th>创建时间</th>
+                                                <th>更新者</th>
+                                                <th>操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            {% for manu in manufacturers %}
+                                                <tr>
+                                                    <th scope="row">{{ manu.id }}</th>
+                                                    <td>{{ manu.name }}</td>
+                                                    <td>{{ manu.city }}</td>
+                                                    <td>{{ manu.contact }}</td>
+                                                    <td>{{ manu.created_at|date:"Y/m/d" }} </td>
+                                                    <td>{{ manu.updated_by }}
+                                                        at {{ manu.updated_at|date:"Y-m-d H:i" }}  </td>
+                                                    <td><a href="{% url 'manufacturer_update' manu.id %}"
+                                                           class="badge badge-info"><i class="feather icon-edit"></i>&nbsp;修改</a>&nbsp;
+                                                        <a href="{% url 'manufacturer_delete' manu.pk %}"
+                                                           class="badge badge-danger"><i
+                                                                class="feather icon-trash-2"></i>&nbsp;删除</a>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="row">
+                                        <div class='col-4'>
+                                            <a href="{% url 'manufacturer_create' %}" class='btn btn-primary'>添加制造商</a>
+                                        </div>
+                                        <div class='col-8'>
+                                            {% show_pagination %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

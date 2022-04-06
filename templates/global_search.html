@@ -1,0 +1,196 @@
+{% extends "layouts/base.html" %}
+{% load lock_extras %}
+{% block title %} 搜索结果 {% endblock %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <div class="page-header">
+                <div class="page-block">
+                    <!-- Title -->
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">搜索结果</h5>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <br>
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <div class="row">
+                        {% if locations %}
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>位置</h5>
+                                    </div>
+
+                                    <div class="card-block ">
+                                        <div class="table-responsive table-hover">
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>名称</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for location in locations %}
+                                                    <tr>
+                                                        <th scope="row">{{ location.id }}</th>
+                                                        <td>{{ location.name }}</td>
+                                                    </tr>
+                                                {% endfor %}
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        {% endif %}
+
+                        {% if manufacturers %}
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>制造商</h5>
+                                    </div>
+
+                                    <div class="card-block ">
+                                        <div class="table-responsive table-hover">
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>名称</th>
+                                                    <th>城市</th>
+                                                    <th>联系方式</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for manufacturer in manufacturers %}
+                                                    <tr>
+                                                        <td>{{ manufacturer.name }}</td>
+                                                        <td>{{ manufacturer.city }}</td>
+                                                        <td>{{ manufacturer.contact }}</td>
+                                                    </tr>
+                                                {% endfor %}
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        {% endif %}
+
+                        {% if locks %}
+                            <div class="col-xl-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>行李锁</h5>
+                                    </div>
+
+                                    <div class="card-block ">
+                                        <div class="table-responsive table-hover">
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>名称</th>
+                                                    <th>状态</th>
+                                                    <th>数量</th>
+                                                    <th>制造商</th>
+                                                    <th>位置</th>
+                                                    <th>锁架号</th>
+
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for lock in locks %}
+                                                    <tr>
+                                                        <td><a href="{% url 'lock_detail' lock.id %}"
+                                                               class="badge badge-secondary">{{ lock.title }}</a></td>
+                                                        <td>{{ lock.get_status_display }}</td>
+                                                        <td>{{ lock.quantity }}</td>
+                                                        <td>{{ lock.manufacturer }}</td>
+                                                        <td>{{ lock.location }}</td>
+                                                        <td>{{ lock.lockshelf_number }}</td>
+                                                    </tr>
+                                                {% endfor %}
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        {% endif %}
+
+                        {% if records %}
+                            <div class="col-xl-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>使用记录</h5>
+                                    </div>
+
+                                    <div class="card-block ">
+                                        <div class="table-responsive table-hover">
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>名称</th>
+                                                    <th>行李锁</th>
+                                                    <th>数量</th>
+                                                    <th>使用时间</th>
+                                                    <th>归还时间</th>
+                                                    <th>状态</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for record in records %}
+                                                    <tr>
+                                                        <td><a href="{% url 'record_detail' record.pk %}"
+                                                               class="badge badge-secondary">{{ record.borrower }}</a>
+                                                        </td>
+                                                        <td>{{ record.lock|truncatewords:3 }}</td>
+                                                        <td>{{ record.quantity }}</td>
+                                                        <td>{{ record.start_day|date:"H-i-s" }}</td>
+                                                        <td>{{ record.end_day|date:"H-i-s" }}</td>
+                                                        <td>{{ record.get_open_or_close_display }}</td>
+                                                    </tr>
+                                                {% endfor %}
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

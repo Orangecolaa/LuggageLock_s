@@ -1,0 +1,118 @@
+{% extends "layouts/base.html" %}
+{% load crispy_forms_tags %}
+{% load lock_extras %}
+
+{% block title %} 员工信息{% endblock %}
+
+{% block stylesheets %}
+<!-- <link rel="stylesheet" href="/static/assets/css/card.css"> -->
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">员工信息</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- [ breadcrumb ] end -->
+        <div class="main-body">
+            <div class="page-wrapper">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5><i class="fas fa-user"></i> {{employee.username}}  </h5>
+                            </div>
+                            {% show_messages %}
+
+                            <div class="card-block">
+                                <div class='row'>                                
+                                    
+                                    <div class="col-md-6">
+                                        <p>用户名称: {{employee.username}}</p>
+                                        {% if employee.is_superuser %}
+                                            <p>超级管理员: 是</p>
+                                        {% else %}
+                                            <p>超级管理员: 否</p>
+                                        {% endif %}
+                                        <p>加入时间 : {{employee.date_joined|date:'Y/m/d H:i'}}</p>
+                                        <p>最后登录时间 : {{employee.last_login|date:"Y/m/d H:i"}}</p>
+                                    </div>
+
+                                    <div class="col-md-6">
+
+                                        {% if employee.is_active %}
+                                            <p>是否活跃: 是</p>
+                                        {% else %}
+                                            <p>是否活跃: 否</p>
+                                        {% endif %}
+
+                                        <form action="{% url 'employee_update' employee.pk %}" method="POST" class='form-inline' style="flex-direction: column;align-items: flex-start">
+                                            {% csrf_token %}
+                                        <div style="display: flex">
+                                        <div class="form-check form-check-inline">修改所属组:</div>
+                                        {% for g in groups %}
+                                        {% if employee|has_group:g %}
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id={{g}} name={{g}}  checked>
+                                            <label class="form-check-label" for={{g}}>{{g}}</label>
+                                        </div>
+                                        {% else %}
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id={{g}} name={{g}}  >
+                                            <label class="form-check-label" for={{g}}>{{g}}</label>
+                                        </div>
+                                        {% endif %}
+                                        {% endfor %}
+
+                                        <button class="badge badge-info" type="submit">更新</button>
+                                        </div>
+                                        <div style="display: flex; margin-top:12px">
+                                        <div class="form-check form-check-inline">修改权限:</div>
+                                        {% if employee.is_superuser %}
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id='{{ supers }}' name='{{ supers }}'  checked>
+                                            <label class="form-check-label" for='{{ supers }}'>超级管理员</label>
+                                        </div>
+                                        {% else %}
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id='{{ supers }}' name='{{ supers }}'  >
+                                            <label class="form-check-label" for='{{ supers }}'>超级管理员</label>
+                                        </div>
+                                        {% endif %}
+
+                                        <button class="badge badge-info" type="submit">更新</button>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <br>
+                                <a href="{% url 'employees_list' %}" class='btn btn-primary'>返回</a>
+
+                            </div>
+                            
+
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

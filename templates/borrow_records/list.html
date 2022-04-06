@@ -1,0 +1,136 @@
+{% extends "layouts/base.html" %}
+{% load lock_extras %}
+
+{% block title %} 使用记录管理 {% endblock %} }
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">所有使用记录</h5>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <br>
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>总共 {{ count_total }} 条记录</h5>
+                                </div>
+                                {% show_messages %}
+
+
+                                <div class="card-block ">
+                                    <div class='row'>
+                                        <div class="col-8">
+                                            <b>Sort By : - </b>
+                                            <a href="{% url 'record_list' %}?search={{ search }}&orderby=id"
+                                               class="badge badge-secondary">Id</a> |
+                                            <a href="{% url 'record_list' %}?search={{ search }}&orderby=borrower"
+                                               class="badge badge-secondary">名称</a> |
+                                            <a href="{% url 'record_list' %}?search={{ search }}&orderby=book"
+                                               class="badge badge-secondary">行李锁</a> |
+                                            <a href="{% url 'record_list' %}?search={{ search }}&orderby=start_day"
+                                               class="badge badge-secondary">开始时间</a> |
+                                            <a href="{% url 'record_list' %}?search={{ search }}&orderby=end_day"
+                                               class="badge badge-secondary">结束时间</a>|
+                                            <a href="{% url 'record_list' %}?search={{ search }}&orderby=closed_at"
+                                               class="badge badge-secondary">关闭时间</a>
+                                        </div>
+
+                                        <div class="col-auto">
+                                            <form class="form-inline mb-2">
+                                                <div class="form-group  mb-2">
+                                                    <label for='search'><input type="text"
+                                                                               class="form-control"
+                                                                               name="search"
+                                                                               id='search'
+                                                                               placeholder="搜索 名称/行李锁/联系方式"
+                                                                               value={{ search }}
+                                                    ></label>
+                                                </div>
+                                                <button type="submit" class="btn btn-secondary mb-2 ml-1 btn-sm">搜索
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <div class="table-responsive table-hover">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>名称</th>
+                                                <th>联系方式</th>
+                                                <th>行李锁</th>
+                                                <th>数量</th>
+                                                <th>位置</th>
+                                                <th>使用时间</th>
+                                                <th>归还时间</th>
+                                                <th>状态</th>
+                                                <th>操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            {% for record in records %}
+                                                <tr>
+                                                    <td>{{ record.borrower }}</td>
+                                                    <td>{{ record.borrower_phone_number }}</td>
+                                                    <td>{{ record.lock|truncatewords:2 }}</td>
+                                                    <td>{{ record.quantity }}</td>
+                                                    <td>{{ record.location }}</td>
+                                                    <td>{{ record.start_day|date:"Y-m-d H:i" }}</td>
+                                                    <td>{{ record.end_day|date:"Y-m-d H:i" }}</td>
+                                                    <td>{{ record.get_open_or_close_display }}</td>
+                                                    <td>
+                                                        <a href="{% url 'record_detail' record.pk %}"
+                                                           class="badge badge-warning badge-bg"><i
+                                                                class="feather icon-eye"></i>&nbsp;详情</a>
+
+                                                        <a href="{% url 'record_delete' record.pk %}"
+                                                           class="badge badge-danger"><i
+                                                                class="feather icon-trash-2"></i>&nbsp;删除</a>
+                                                    </td>
+
+                                                </tr>
+                                            {% endfor %}
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="row">
+                                        <div class='col-4'>
+                                            <a href="{% url 'record_create' %}" class='btn btn-primary'>添加新记录</a>
+                                        </div>
+                                        <div class='col-8'>
+                                            {% show_pagination %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block javascripts %}{% endblock javascripts %}
