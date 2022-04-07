@@ -32,20 +32,21 @@ def login_view(request):
 
 
 def register_user(request):
-    msg = None
-    success = False
+    # msg = None
+    # success = False
+    #
+    # if request.method == "POST":
+    #     form = SignUpForm(request.POST)
+    #     if form.is_valid():
+    #         form.save()
+    #
+    #         msg = '用户创建成功-请<a class="mb-0 text-info" href="/auth/login">登录</a>'
+    #         success = True
+    #
+    #     else:
+    #         msg = '注册格式无效'
+    # else:
+    #     form = SignUpForm()
 
-    if request.method == "POST":
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
-
-            msg = '用户创建成功-请<a class="mb-0 text-info" href="/auth/login">登录</a>'
-            success = True
-
-        else:
-            msg = '注册格式无效'
-    else:
-        form = SignUpForm()
-
-    return render(request, "accounts/register.html", {"form": form, "msg": msg, "success": success})
+    # return render(request, "accounts/register.html", {"form": form, "msg": msg, "success": success})
+    return render(request, 'accounts/not_register.html')
