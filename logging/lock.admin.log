@@ -1,0 +1,1209 @@
+2022-04-06 23:38:02,580 django.utils.autoreload 637 INFO     Watching for file changes with StatReloader
+2022-04-06 23:41:00,633 django.utils.autoreload 637 INFO     Watching for file changes with StatReloader
+2022-04-06 23:41:07,562 django.request 230 WARNING  Not Found: /media/profile/20220406/v2-5c764589434ed16c70f9f0697a612129_r.jpg
+2022-04-06 23:41:13,036 django.request 230 WARNING  Not Found: /media/profile/20220406/v2-5c764589434ed16c70f9f0697a612129_r.jpg
+2022-04-06 23:41:13,072 django.request 230 WARNING  Not Found: /media/profile/20220406/v2-5c764589434ed16c70f9f0697a612129_r.jpg
+2022-04-06 23:41:15,176 django.request 230 WARNING  Not Found: /media/profile/20220406/v2-5c764589434ed16c70f9f0697a612129_r.jpg
+2022-04-07 12:31:55,238 django.utils.autoreload 637 INFO     Watching for file changes with StatReloader
+2022-04-07 12:32:18,339 django.request 230 ERROR    Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 700, in urlopen
+    self._prepare_proxy(conn)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 994, in _prepare_proxy
+    conn.connect()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 364, in connect
+    conn = self._connect_tls_proxy(hostname, conn)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 507, in _connect_tls_proxy
+    ssl_context=ssl_context,
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\ssl_.py", line 453, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\ssl_.py", line 495, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 423, in wrap_socket
+    session=session
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 870, in _create
+    self.do_handshake()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 1139, in do_handshake
+    self._sslobj.do_handshake()
+OSError: [Errno 0] Error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\adapters.py", line 450, in send
+    timeout=timeout
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 786, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='devapi.qweather.com', port=443): Max retries exceeded with url: /v7/weather/now?key=9a5c99b04fbb480ca27a14b333e05953&location=101280101 (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\contrib\auth\mixins.py", line 71, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\PycharmProjects\biyesheji\LuggageLock\lock\views\HomeView.py", line 57, in get
+    return render(request, self.template_name, self.context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader_tags.py", line 195, in render
+    return template.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 172, in render
+    return self._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\library.py", line 214, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "E:\PycharmProjects\biyesheji\LuggageLock\lock\templatetags\lock_extras.py", line 64, in show_weather
+    data = requests.get(url, params=params).json()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='devapi.qweather.com', port=443): Max retries exceeded with url: /v7/weather/now?key=9a5c99b04fbb480ca27a14b333e05953&location=101280101 (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+2022-04-07 12:32:18,898 django.request 230 WARNING  Not Found: /favicon.ico
+2022-04-07 12:32:45,729 django.request 230 ERROR    Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 700, in urlopen
+    self._prepare_proxy(conn)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 994, in _prepare_proxy
+    conn.connect()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 364, in connect
+    conn = self._connect_tls_proxy(hostname, conn)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 507, in _connect_tls_proxy
+    ssl_context=ssl_context,
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\ssl_.py", line 453, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\ssl_.py", line 495, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 423, in wrap_socket
+    session=session
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 870, in _create
+    self.do_handshake()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 1139, in do_handshake
+    self._sslobj.do_handshake()
+OSError: [Errno 0] Error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\adapters.py", line 450, in send
+    timeout=timeout
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 786, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='devapi.qweather.com', port=443): Max retries exceeded with url: /v7/weather/now?key=9a5c99b04fbb480ca27a14b333e05953&location=101280101 (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\contrib\auth\mixins.py", line 71, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\PycharmProjects\biyesheji\LuggageLock\lock\views\HomeView.py", line 57, in get
+    return render(request, self.template_name, self.context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader_tags.py", line 195, in render
+    return template.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 172, in render
+    return self._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\library.py", line 214, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "E:\PycharmProjects\biyesheji\LuggageLock\lock\templatetags\lock_extras.py", line 64, in show_weather
+    data = requests.get(url, params=params).json()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='devapi.qweather.com', port=443): Max retries exceeded with url: /v7/weather/now?key=9a5c99b04fbb480ca27a14b333e05953&location=101280101 (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+2022-04-07 12:35:51,511 django.request 230 ERROR    Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 700, in urlopen
+    self._prepare_proxy(conn)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 994, in _prepare_proxy
+    conn.connect()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 364, in connect
+    conn = self._connect_tls_proxy(hostname, conn)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 507, in _connect_tls_proxy
+    ssl_context=ssl_context,
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\ssl_.py", line 453, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\ssl_.py", line 495, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 423, in wrap_socket
+    session=session
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 870, in _create
+    self.do_handshake()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 1139, in do_handshake
+    self._sslobj.do_handshake()
+OSError: [Errno 0] Error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\adapters.py", line 450, in send
+    timeout=timeout
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 786, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='devapi.qweather.com', port=443): Max retries exceeded with url: /v7/weather/now?key=9a5c99b04fbb480ca27a14b333e05953&location=101280101 (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\contrib\auth\mixins.py", line 71, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\PycharmProjects\biyesheji\LuggageLock\lock\views\HomeView.py", line 57, in get
+    return render(request, self.template_name, self.context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader_tags.py", line 195, in render
+    return template.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 172, in render
+    return self._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\library.py", line 214, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "E:\PycharmProjects\biyesheji\LuggageLock\lock\templatetags\lock_extras.py", line 64, in show_weather
+    data = requests.get(url, params=params).json()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='devapi.qweather.com', port=443): Max retries exceeded with url: /v7/weather/now?key=9a5c99b04fbb480ca27a14b333e05953&location=101280101 (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+2022-04-07 12:38:15,049 django.request 230 ERROR    Internal Server Error: /lock/list
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 175, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\connection.py", line 95, in create_connection
+    raise err
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 710, in urlopen
+    chunked=chunked,
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 386, in _make_request
+    self._validate_conn(conn)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 1040, in _validate_conn
+    conn.connect()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 358, in connect
+    conn = self._new_conn()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 187, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x000001F094935EC8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\adapters.py", line 450, in send
+    timeout=timeout
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 786, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='devapi.qweather.com', port=443): Max retries exceeded with url: /v7/weather/now?key=9a5c99b04fbb480ca27a14b333e05953&location=101280101 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001F094935EC8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    response = response.render()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\response.py", line 83, in rendered_content
+    return template.render(context, self._request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader_tags.py", line 195, in render
+    return template.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 172, in render
+    return self._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\library.py", line 214, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "E:\PycharmProjects\biyesheji\LuggageLock\lock\templatetags\lock_extras.py", line 64, in show_weather
+    data = requests.get(url, params=params).json()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='devapi.qweather.com', port=443): Max retries exceeded with url: /v7/weather/now?key=9a5c99b04fbb480ca27a14b333e05953&location=101280101 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001F094935EC8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。'))
+2022-04-07 12:39:25,625 django.request 230 ERROR    Internal Server Error: /record-create/
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\contrib\auth\mixins.py", line 71, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\views\generic\edit.py", line 172, in post
+    return super().post(request, *args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\views\generic\edit.py", line 142, in post
+    return self.form_valid(form)
+  File "E:\PycharmProjects\biyesheji\LuggageLock\lock\views\BorrowRecordView.py", line 31, in form_valid
+    selected_lock = Lock.objects.get(title=form.cleaned_data['lock'])
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\db\models\query.py", line 437, in get
+    self.model._meta.object_name
+lock.models.Lock.DoesNotExist: Lock matching query does not exist.
+2022-04-07 14:07:00,848 django.utils.autoreload 637 INFO     Watching for file changes with StatReloader
+2022-04-07 15:36:31,528 django.utils.autoreload 637 INFO     Watching for file changes with StatReloader
+2022-04-07 15:36:46,557 django.request 230 ERROR    Internal Server Error: /lock/create
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 700, in urlopen
+    self._prepare_proxy(conn)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 994, in _prepare_proxy
+    conn.connect()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 364, in connect
+    conn = self._connect_tls_proxy(hostname, conn)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 507, in _connect_tls_proxy
+    ssl_context=ssl_context,
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\ssl_.py", line 453, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\ssl_.py", line 495, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 423, in wrap_socket
+    session=session
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 870, in _create
+    self.do_handshake()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 1139, in do_handshake
+    self._sslobj.do_handshake()
+OSError: [Errno 0] Error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\adapters.py", line 450, in send
+    timeout=timeout
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 786, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='devapi.qweather.com', port=443): Max retries exceeded with url: /v7/weather/now?key=9a5c99b04fbb480ca27a14b333e05953&location=101280101 (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    response = response.render()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\response.py", line 83, in rendered_content
+    return template.render(context, self._request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader_tags.py", line 195, in render
+    return template.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 172, in render
+    return self._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\library.py", line 214, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "E:\PycharmProjects\biyesheji\LuggageLock\lock\templatetags\lock_extras.py", line 64, in show_weather
+    data = requests.get(url, params=params).json()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='devapi.qweather.com', port=443): Max retries exceeded with url: /v7/weather/now?key=9a5c99b04fbb480ca27a14b333e05953&location=101280101 (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+2022-04-07 15:36:47,639 django.request 230 WARNING  Not Found: /static/assets/fonts/fontawesome/css/fontawesome-all.min.css
+2022-04-07 15:36:50,761 django.request 230 ERROR    Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 700, in urlopen
+    self._prepare_proxy(conn)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 994, in _prepare_proxy
+    conn.connect()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 364, in connect
+    conn = self._connect_tls_proxy(hostname, conn)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 507, in _connect_tls_proxy
+    ssl_context=ssl_context,
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\ssl_.py", line 453, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\ssl_.py", line 495, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 423, in wrap_socket
+    session=session
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 870, in _create
+    self.do_handshake()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 1139, in do_handshake
+    self._sslobj.do_handshake()
+OSError: [Errno 0] Error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\adapters.py", line 450, in send
+    timeout=timeout
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 786, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='devapi.qweather.com', port=443): Max retries exceeded with url: /v7/weather/now?key=9a5c99b04fbb480ca27a14b333e05953&location=101280101 (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\contrib\auth\mixins.py", line 71, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\PycharmProjects\biyesheji\LuggageLock\lock\views\HomeView.py", line 57, in get
+    return render(request, self.template_name, self.context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader_tags.py", line 195, in render
+    return template.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 172, in render
+    return self._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\library.py", line 214, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "E:\PycharmProjects\biyesheji\LuggageLock\lock\templatetags\lock_extras.py", line 64, in show_weather
+    data = requests.get(url, params=params).json()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='devapi.qweather.com', port=443): Max retries exceeded with url: /v7/weather/now?key=9a5c99b04fbb480ca27a14b333e05953&location=101280101 (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+2022-04-07 15:36:51,078 django.request 230 WARNING  Not Found: /static/assets/fonts/fontawesome/css/fontawesome-all.min.css
+2022-04-07 15:37:23,703 django.request 230 WARNING  Not Found: /static/assets/fonts/fontawesome/css/fontawesome-all.min.css
+2022-04-07 15:37:23,749 django.request 230 WARNING  Not Found: /media/profile/20220407/v2-5c764589434ed16c70f9f0697a612129_r.jpg
+2022-04-07 15:37:27,011 django.request 230 WARNING  Not Found: /static/assets/fonts/fontawesome/css/fontawesome-all.min.css
+2022-04-07 15:37:27,106 django.request 230 WARNING  Not Found: /media/profile/20220407/v2-5c764589434ed16c70f9f0697a612129_r.jpg
+2022-04-07 15:37:28,272 django.request 230 WARNING  Not Found: /static/assets/fonts/fontawesome/css/fontawesome-all.min.css
+2022-04-07 15:37:28,300 django.request 230 WARNING  Not Found: /media/profile/20220407/v2-5c764589434ed16c70f9f0697a612129_r.jpg
+2022-04-07 15:37:30,579 django.request 230 WARNING  Not Found: /static/assets/fonts/fontawesome/css/fontawesome-all.min.css
+2022-04-07 15:37:30,586 django.request 230 WARNING  Not Found: /media/profile/20220407/v2-5c764589434ed16c70f9f0697a612129_r.jpg
+2022-04-07 15:37:37,970 django.request 230 WARNING  Not Found: /static/assets/fonts/fontawesome/css/fontawesome-all.min.css
+2022-04-07 15:37:37,987 django.request 230 WARNING  Not Found: /media/profile/20220407/v2-5c764589434ed16c70f9f0697a612129_r.jpg
+2022-04-07 15:37:39,826 django.request 230 WARNING  Not Found: /static/assets/fonts/fontawesome/css/fontawesome-all.min.css
+2022-04-07 15:37:39,848 django.request 230 WARNING  Not Found: /media/profile/20220407/v2-5c764589434ed16c70f9f0697a612129_r.jpg
+2022-04-07 15:37:41,007 django.request 230 WARNING  Not Found: /static/assets/fonts/fontawesome/css/fontawesome-all.min.css
+2022-04-07 15:37:41,027 django.request 230 WARNING  Not Found: /media/profile/20220407/v2-5c764589434ed16c70f9f0697a612129_r.jpg
+2022-04-07 15:38:20,469 django.request 230 WARNING  Not Found: /static/assets/fonts/fontawesome/css/fontawesome-all.min.css
+2022-04-07 15:38:20,492 django.request 230 WARNING  Not Found: /media/profile/20220407/v2-5c764589434ed16c70f9f0697a612129_r.jpg
+2022-04-07 15:38:21,858 django.request 230 WARNING  Not Found: /static/assets/fonts/fontawesome/css/fontawesome-all.min.css
+2022-04-07 15:38:21,861 django.request 230 WARNING  Not Found: /media/profile/20220407/v2-5c764589434ed16c70f9f0697a612129_r.jpg
+2022-04-07 15:38:23,187 django.request 230 WARNING  Not Found: /static/assets/fonts/fontawesome/css/fontawesome-all.min.css
+2022-04-07 15:38:23,208 django.request 230 WARNING  Not Found: /media/profile/20220407/v2-5c764589434ed16c70f9f0697a612129_r.jpg
+2022-04-07 15:38:23,244 django.request 230 WARNING  Not Found: /media/profile/20220407/v2-5c764589434ed16c70f9f0697a612129_r.jpg
+2022-04-07 15:38:25,149 django.request 230 WARNING  Not Found: /static/assets/fonts/fontawesome/css/fontawesome-all.min.css
+2022-04-07 15:38:25,172 django.request 230 WARNING  Not Found: /media/profile/20220407/v2-5c764589434ed16c70f9f0697a612129_r.jpg
+2022-04-07 15:38:37,135 django.request 230 WARNING  Not Found: /static/assets/fonts/fontawesome/css/fontawesome-all.min.css
+2022-04-07 15:38:37,166 django.request 230 WARNING  Not Found: /media/profile/20220407/v2-5c764589434ed16c70f9f0697a612129_r_KP4gHhT.jpg
+2022-04-07 15:38:40,346 django.request 230 WARNING  Not Found: /static/assets/fonts/fontawesome/css/fontawesome-all.min.css
+2022-04-07 15:38:40,364 django.request 230 WARNING  Not Found: /media/profile/20220407/v2-5c764589434ed16c70f9f0697a612129_r_KP4gHhT.jpg
+2022-04-07 15:38:40,389 django.request 230 WARNING  Not Found: /media/profile/20220407/v2-5c764589434ed16c70f9f0697a612129_r_KP4gHhT.jpg
+2022-04-07 15:38:42,374 django.request 230 WARNING  Not Found: /static/assets/fonts/fontawesome/css/fontawesome-all.min.css
+2022-04-07 15:38:42,397 django.request 230 WARNING  Not Found: /media/profile/20220407/v2-5c764589434ed16c70f9f0697a612129_r_KP4gHhT.jpg
+2022-04-07 15:38:44,681 django.request 230 WARNING  Not Found: /static/assets/fonts/fontawesome/css/fontawesome-all.min.css
+2022-04-07 15:38:44,712 django.request 230 WARNING  Not Found: /media/profile/20220407/v2-5c764589434ed16c70f9f0697a612129_r_KP4gHhT.jpg
+2022-04-07 15:38:45,984 django.request 230 WARNING  Not Found: /static/assets/fonts/fontawesome/css/fontawesome-all.min.css
+2022-04-07 15:38:45,988 django.request 230 WARNING  Not Found: /media/profile/20220407/v2-5c764589434ed16c70f9f0697a612129_r_KP4gHhT.jpg
+2022-04-07 15:38:47,901 django.request 230 WARNING  Not Found: /static/assets/fonts/fontawesome/css/fontawesome-all.min.css
+2022-04-07 15:38:47,918 django.request 230 WARNING  Not Found: /media/profile/20220407/v2-5c764589434ed16c70f9f0697a612129_r_KP4gHhT.jpg
+2022-04-08 10:07:35,344 django.utils.autoreload 637 INFO     Watching for file changes with StatReloader
+2022-04-08 10:07:57,215 django.request 230 ERROR    Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 700, in urlopen
+    self._prepare_proxy(conn)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 994, in _prepare_proxy
+    conn.connect()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 364, in connect
+    conn = self._connect_tls_proxy(hostname, conn)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 507, in _connect_tls_proxy
+    ssl_context=ssl_context,
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\ssl_.py", line 453, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\ssl_.py", line 495, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 423, in wrap_socket
+    session=session
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 870, in _create
+    self.do_handshake()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 1139, in do_handshake
+    self._sslobj.do_handshake()
+OSError: [Errno 0] Error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\adapters.py", line 450, in send
+    timeout=timeout
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 786, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='devapi.qweather.com', port=443): Max retries exceeded with url: /v7/weather/now?key=9a5c99b04fbb480ca27a14b333e05953&location=101280101 (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\contrib\auth\mixins.py", line 71, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\PycharmProjects\biyesheji\LuggageLock\lock\views\HomeView.py", line 57, in get
+    return render(request, self.template_name, self.context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader_tags.py", line 195, in render
+    return template.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 172, in render
+    return self._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\library.py", line 214, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "E:\PycharmProjects\biyesheji\LuggageLock\lock\templatetags\lock_extras.py", line 64, in show_weather
+    data = requests.get(url, params=params).json()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='devapi.qweather.com', port=443): Max retries exceeded with url: /v7/weather/now?key=9a5c99b04fbb480ca27a14b333e05953&location=101280101 (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+2022-04-08 10:07:57,453 django.request 230 ERROR    Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 700, in urlopen
+    self._prepare_proxy(conn)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 994, in _prepare_proxy
+    conn.connect()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 364, in connect
+    conn = self._connect_tls_proxy(hostname, conn)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 507, in _connect_tls_proxy
+    ssl_context=ssl_context,
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\ssl_.py", line 453, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\ssl_.py", line 495, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 423, in wrap_socket
+    session=session
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 870, in _create
+    self.do_handshake()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 1139, in do_handshake
+    self._sslobj.do_handshake()
+OSError: [Errno 0] Error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\adapters.py", line 450, in send
+    timeout=timeout
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 786, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='devapi.qweather.com', port=443): Max retries exceeded with url: /v7/weather/now?key=9a5c99b04fbb480ca27a14b333e05953&location=101280101 (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\contrib\auth\mixins.py", line 71, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\PycharmProjects\biyesheji\LuggageLock\lock\views\HomeView.py", line 57, in get
+    return render(request, self.template_name, self.context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader_tags.py", line 195, in render
+    return template.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 172, in render
+    return self._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\library.py", line 214, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "E:\PycharmProjects\biyesheji\LuggageLock\lock\templatetags\lock_extras.py", line 64, in show_weather
+    data = requests.get(url, params=params).json()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='devapi.qweather.com', port=443): Max retries exceeded with url: /v7/weather/now?key=9a5c99b04fbb480ca27a14b333e05953&location=101280101 (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+2022-04-08 10:07:58,433 django.request 230 WARNING  Not Found: /static/assets/fonts/fontawesome/css/fontawesome-all.min.css
+2022-04-08 10:07:58,517 django.request 230 WARNING  Not Found: /static/assets/plugins/bootstrap/css/bootstrap.min.css
+2022-04-08 10:08:04,777 django.request 230 ERROR    Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 700, in urlopen
+    self._prepare_proxy(conn)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 994, in _prepare_proxy
+    conn.connect()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 364, in connect
+    conn = self._connect_tls_proxy(hostname, conn)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 507, in _connect_tls_proxy
+    ssl_context=ssl_context,
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\ssl_.py", line 453, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\ssl_.py", line 495, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 423, in wrap_socket
+    session=session
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 870, in _create
+    self.do_handshake()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 1139, in do_handshake
+    self._sslobj.do_handshake()
+OSError: [Errno 0] Error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\adapters.py", line 450, in send
+    timeout=timeout
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 786, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='devapi.qweather.com', port=443): Max retries exceeded with url: /v7/weather/now?key=9a5c99b04fbb480ca27a14b333e05953&location=101280101 (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\contrib\auth\mixins.py", line 71, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\PycharmProjects\biyesheji\LuggageLock\lock\views\HomeView.py", line 57, in get
+    return render(request, self.template_name, self.context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader_tags.py", line 195, in render
+    return template.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 172, in render
+    return self._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\library.py", line 214, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "E:\PycharmProjects\biyesheji\LuggageLock\lock\templatetags\lock_extras.py", line 64, in show_weather
+    data = requests.get(url, params=params).json()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='devapi.qweather.com', port=443): Max retries exceeded with url: /v7/weather/now?key=9a5c99b04fbb480ca27a14b333e05953&location=101280101 (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+2022-04-08 10:08:05,000 django.request 230 WARNING  Not Found: /static/assets/fonts/fontawesome/css/fontawesome-all.min.css
+2022-04-08 10:08:05,016 django.request 230 WARNING  Not Found: /static/assets/plugins/bootstrap/css/bootstrap.min.css
+2022-04-08 10:08:08,759 django.request 230 ERROR    Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 700, in urlopen
+    self._prepare_proxy(conn)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 994, in _prepare_proxy
+    conn.connect()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 364, in connect
+    conn = self._connect_tls_proxy(hostname, conn)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 507, in _connect_tls_proxy
+    ssl_context=ssl_context,
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\ssl_.py", line 453, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\ssl_.py", line 495, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 423, in wrap_socket
+    session=session
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 870, in _create
+    self.do_handshake()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 1139, in do_handshake
+    self._sslobj.do_handshake()
+OSError: [Errno 0] Error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\adapters.py", line 450, in send
+    timeout=timeout
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 786, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='devapi.qweather.com', port=443): Max retries exceeded with url: /v7/weather/now?key=9a5c99b04fbb480ca27a14b333e05953&location=101280101 (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\contrib\auth\mixins.py", line 71, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\PycharmProjects\biyesheji\LuggageLock\lock\views\HomeView.py", line 57, in get
+    return render(request, self.template_name, self.context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader_tags.py", line 195, in render
+    return template.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 172, in render
+    return self._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\library.py", line 214, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "E:\PycharmProjects\biyesheji\LuggageLock\lock\templatetags\lock_extras.py", line 64, in show_weather
+    data = requests.get(url, params=params).json()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='devapi.qweather.com', port=443): Max retries exceeded with url: /v7/weather/now?key=9a5c99b04fbb480ca27a14b333e05953&location=101280101 (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+2022-04-08 10:08:08,998 django.request 230 WARNING  Not Found: /static/assets/fonts/fontawesome/css/fontawesome-all.min.css
+2022-04-08 10:08:09,041 django.request 230 WARNING  Not Found: /static/assets/plugins/bootstrap/css/bootstrap.min.css
+2022-04-08 10:08:49,537 django.request 230 ERROR    Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 700, in urlopen
+    self._prepare_proxy(conn)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 994, in _prepare_proxy
+    conn.connect()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 364, in connect
+    conn = self._connect_tls_proxy(hostname, conn)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 507, in _connect_tls_proxy
+    ssl_context=ssl_context,
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\ssl_.py", line 453, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\ssl_.py", line 495, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 423, in wrap_socket
+    session=session
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 870, in _create
+    self.do_handshake()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 1139, in do_handshake
+    self._sslobj.do_handshake()
+OSError: [Errno 0] Error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\adapters.py", line 450, in send
+    timeout=timeout
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 786, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='devapi.qweather.com', port=443): Max retries exceeded with url: /v7/weather/now?key=9a5c99b04fbb480ca27a14b333e05953&location=101280101 (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\contrib\auth\mixins.py", line 71, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\PycharmProjects\biyesheji\LuggageLock\lock\views\HomeView.py", line 57, in get
+    return render(request, self.template_name, self.context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader_tags.py", line 195, in render
+    return template.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 172, in render
+    return self._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\library.py", line 214, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "E:\PycharmProjects\biyesheji\LuggageLock\lock\templatetags\lock_extras.py", line 64, in show_weather
+    data = requests.get(url, params=params).json()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='devapi.qweather.com', port=443): Max retries exceeded with url: /v7/weather/now?key=9a5c99b04fbb480ca27a14b333e05953&location=101280101 (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+2022-04-08 10:08:49,974 django.request 230 WARNING  Not Found: /static/assets/fonts/fontawesome/css/fontawesome-all.min.css
+2022-04-08 10:08:50,349 django.request 230 WARNING  Not Found: /static/assets/plugins/bootstrap/css/bootstrap.min.css
+2022-04-08 10:08:55,523 django.utils.autoreload 637 INFO     Watching for file changes with StatReloader
+2022-04-08 10:09:00,605 django.request 230 ERROR    Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 700, in urlopen
+    self._prepare_proxy(conn)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 994, in _prepare_proxy
+    conn.connect()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 364, in connect
+    conn = self._connect_tls_proxy(hostname, conn)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connection.py", line 507, in _connect_tls_proxy
+    ssl_context=ssl_context,
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\ssl_.py", line 453, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\ssl_.py", line 495, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 423, in wrap_socket
+    session=session
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 870, in _create
+    self.do_handshake()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\ssl.py", line 1139, in do_handshake
+    self._sslobj.do_handshake()
+OSError: [Errno 0] Error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\adapters.py", line 450, in send
+    timeout=timeout
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\connectionpool.py", line 786, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\urllib3\util\retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='devapi.qweather.com', port=443): Max retries exceeded with url: /v7/weather/now?key=9a5c99b04fbb480ca27a14b333e05953&location=101280101 (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\contrib\auth\mixins.py", line 71, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\PycharmProjects\biyesheji\LuggageLock\lock\views\HomeView.py", line 57, in get
+    return render(request, self.template_name, self.context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\loader_tags.py", line 195, in render
+    return template.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 172, in render
+    return self._render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\django\template\library.py", line 214, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "E:\PycharmProjects\biyesheji\LuggageLock\lock\templatetags\lock_extras.py", line 64, in show_weather
+    data = requests.get(url, params=params).json()
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Program Files\Anaconda3\envs\Django\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='devapi.qweather.com', port=443): Max retries exceeded with url: /v7/weather/now?key=9a5c99b04fbb480ca27a14b333e05953&location=101280101 (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+2022-04-08 10:09:01,516 django.request 230 WARNING  Not Found: /favicon.ico

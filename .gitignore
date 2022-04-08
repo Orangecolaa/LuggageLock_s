@@ -6,10 +6,9 @@ __pycache__/
 *.pytest_cache
 .coverage
 
-# database & logs
+# database
 *.db
 *.sqlite3
-*.log
 
 # venv
 env
