@@ -28,6 +28,9 @@ $ # 迁移数据表
 $ python manage.py makemigrations
 $ python manage.py migrate
 $
+$ # 创建超级用户
+$ python manage.py createsuperuser
+$
 $ # 启动应用程序（开发模式）
 $ python manage.py runserver # default port 8000
 $
@@ -35,9 +38,9 @@ $ # 启动应用程序-自定义端口
 $ # python manage.py runserver 0.0.0.0:<your_port>
 $
 $ # 在浏览器中访问web应用: http://127.0.0.1:8000/
+$ # 访问http://127.0.0.1:8000/admin 创建api和download_data分组
+$ # 将创建的超级用户加入两个组开启数据中心功能
 ```
-
-> 注意：要使用该应用程序，请访问注册页面并**创建一个新用户**。认证后，应用程序将解锁私人页面。
 
 <br />
 
