@@ -1275,3 +1275,11 @@ requests.exceptions.ProxyError: HTTPSConnectionPool(host='devapi.qweather.com', 
 2022-04-09 22:56:02,943 django.request 230 WARNING  Not Found: /static/assets/js/vendor-all.min.js
 2022-04-09 22:56:02,948 django.request 230 WARNING  Not Found: /static/assets/plugins/bootstrap/js/bootstrap.min.js
 2022-04-09 22:56:02,952 django.request 230 WARNING  Not Found: /static/assets/js/pcoded.min.js
+2022-04-24 22:44:21,390 django.utils.autoreload 637 INFO     Watching for file changes with StatReloader
+2022-04-24 22:44:57,139 django.utils.autoreload 251 INFO     E:\PycharmProjects\biyesheji\LuggageLock_s\lock\views\LockView.py changed, reloading.
+2022-04-24 22:44:58,521 django.utils.autoreload 637 INFO     Watching for file changes with StatReloader
+2022-04-24 22:45:08,480 django.utils.autoreload 251 INFO     E:\PycharmProjects\biyesheji\LuggageLock_s\lock\views\LockView.py changed, reloading.
+2022-04-24 22:45:09,477 django.utils.autoreload 637 INFO     Watching for file changes with StatReloader
+2022-04-24 22:45:44,496 django.utils.autoreload 637 INFO     Watching for file changes with StatReloader
+2022-04-24 22:47:14,914 django.utils.autoreload 637 INFO     Watching for file changes with StatReloader
+2022-04-24 22:47:29,871 django.utils.autoreload 637 INFO     Watching for file changes with StatReloader
