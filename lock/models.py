@@ -21,7 +21,7 @@ LOCK_STATUS = [
 # 定义活动类型choices
 OPERATION_TYPE = [
     ('success', '创建'),
-    ('waring', '更新'),
+    ('warning', '更新'),
     ('danger', '删除'),
     ('info', '关闭')
 ]
