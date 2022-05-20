@@ -1,0 +1,12 @@
+[2022-04-08 01:34:24 +0800] [17627] [INFO] Starting gunicorn 20.1.0
+[2022-04-08 01:34:24 +0800] [17627] [INFO] Listening at: unix:/tmp/gunicorn1.sock (17627)
+[2022-04-08 01:34:24 +0800] [17627] [INFO] Using worker: sync
+[2022-04-08 01:34:24 +0800] [17630] [INFO] Booting worker with pid: 17630
+[2022-04-08 01:34:24 +0800] [17631] [INFO] Booting worker with pid: 17631
+[2022-04-08 01:34:24 +0800] [17633] [INFO] Booting worker with pid: 17633
+[2022-05-19 14:43:20 +0800] [17633] [INFO] Parent changed, shutting down: <Worker 17633>
+[2022-05-19 14:43:20 +0800] [17633] [INFO] Worker exiting (pid: 17633)
+[2022-05-19 14:43:20 +0800] [17631] [INFO] Parent changed, shutting down: <Worker 17631>
+[2022-05-19 14:43:20 +0800] [17631] [INFO] Worker exiting (pid: 17631)
+[2022-05-19 14:43:21 +0800] [17630] [INFO] Parent changed, shutting down: <Worker 17630>
+[2022-05-19 14:43:21 +0800] [17630] [INFO] Worker exiting (pid: 17630)
